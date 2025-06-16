@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Grid, GridItem, Show, useBreakpointValue } from '@chakra-ui/react'
+import { Grid, GridItem, Show, useBreakpointValue, Button } from '@chakra-ui/react'
 import NavBar from './components/NavBar';
 import './App.css'
 function App() {
@@ -8,7 +8,6 @@ function App() {
       base: "base",
       lg: "lg",
     });
-  console.log(breakPoint)
   return (
     <Grid templateAreas={{
       base: `"nav" "main"`,

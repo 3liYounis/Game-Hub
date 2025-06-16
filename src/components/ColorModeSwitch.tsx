@@ -5,18 +5,18 @@ import { FaMoon } from "react-icons/fa";
 
 const ColorModeSwitch = () => {
     const { toggleColorMode, colorMode } = useColorMode();
-    var mode = colorMode.charAt(0).toUpperCase() + colorMode.slice(1);
-    var color = colorMode == 'dark' ? "white" : "yellow.500";
+    var inverseMode = colorMode == "dark" ? "light" : "dark";
+    inverseMode = inverseMode.charAt(0).toUpperCase() + inverseMode.slice(1);
+    var color = colorMode == 'light' ? "white" : "yellow";
     return (
         <HStack>
-            <Button variant="outline" size="sm" onClick={toggleColorMode} className='--bs-warning-border-subtle'>
-                <Icon size="md" color={color}>
-                    {colorMode === "light" ? <FaSun /> : <FaMoon />}
+            <Button size="sm" onClick={toggleColorMode} colorPalette={color}>
+                <Icon size="sm">
+                    {colorMode === "light" ? <FaMoon /> : <FaSun />}
                 </Icon>
-                <Text>{mode}</Text>
+                <Text>{inverseMode}</Text>
             </Button>
         </HStack>
     )
 }
-
 export default ColorModeSwitch;

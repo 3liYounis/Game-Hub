@@ -11,10 +11,11 @@ const ColorModeSwitch = () => {
     return (
         <HStack>
             <Button size="sm" onClick={toggleColorMode} colorPalette={color}>
-                <Icon size="sm">
-                    {colorMode === "light" ? <FaMoon /> : <FaSun />}
-                </Icon>
-                <Text>{inverseMode}</Text>
+                <Icon
+                    as={colorMode === "light" ? FaMoon : FaSun}
+                    boxSize="1.25em"
+                />
+                <Text fontWeight={'bold'}>{inverseMode}</Text>
             </Button>
         </HStack>
     )

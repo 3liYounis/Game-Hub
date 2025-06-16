@@ -7,10 +7,10 @@ const useGames = () => {
     const [error, setError] = useState('');
     useEffect(() => {
         setIsLoading(true);
-        const cancel = gamesService.getControllerAbort();
+        const controller = new AbortController();
         const fetchGames = async () => {
             try {
-                const response = await gamesService.getAll<Games>();
+                const response = await gamesService.getAll<Games>(controller.signal);
                 if (response) {
                     setGames(response.data.results);
                     setIsLoading(false);
@@ -22,6 +22,7 @@ const useGames = () => {
             }
         }
         fetchGames();
+        return () => controller.abort();
     }, []);
     return { isLoading, setIsLoading, games, setGames, error, setError }
 }

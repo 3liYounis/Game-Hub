@@ -1,14 +1,17 @@
-import { HStack, Image, Text } from "@chakra-ui/react";
+import { HStack, Image, Link } from "@chakra-ui/react";
 import { Genre } from "@/hooks/useGenres";
 import getCropppedImageURL from "@/services/image-url";
 interface Props {
-    genre: Genre
+    genre: Genre,
+    onSelectGenre: (genre: Genre) => void;
 }
-const GenreListItem = ({ genre }: Props) => {
+const GenreListItem = ({ genre, onSelectGenre }: Props) => {
     return (
         <HStack>
             <Image boxSize="32px" borderRadius={8} src={getCropppedImageURL(genre.image_background)} />
-            <Text>{genre.name}</Text>
+            <Link onClick={() => onSelectGenre(genre)}>
+                {genre.name}
+            </Link>
         </HStack>
     )
 }

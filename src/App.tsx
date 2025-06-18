@@ -3,7 +3,10 @@ import NavBar from './components/NavBar';
 import GameGrid from './components/GameGrid';
 import './App.css'
 import GenreList from './components/GenreList';
+import { useState } from 'react';
+import { Genre } from './hooks/useGenres';
 function App() {
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   const breakPoint = useBreakpointValue(
     {
       base: "base",
@@ -23,12 +26,12 @@ function App() {
       </GridItem>
       <Show when={breakPoint != "base"}>
         <GridItem area="aside" paddingX={5}>
-          <GenreList>
+          <GenreList onSelectGenre={setSelectedGenre}>
           </GenreList>
         </GridItem>
       </Show>
       <GridItem area="main">
-        <GameGrid></GameGrid>
+        <GameGrid selectedGenre={selectedGenre}></GameGrid>
       </GridItem>
     </Grid >
   )

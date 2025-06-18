@@ -1,3 +1,4 @@
+import { AxiosRequestConfig } from "axios";
 import apiClient from "./api-client";
 interface Entity {
     id: number;
@@ -7,8 +8,8 @@ class HTTPService {
     constructor(endpoint: string) {
         this.endpoint = endpoint;
     }
-    getAll<T>(signal?: AbortSignal) {
-        return apiClient.get<T>(this.endpoint, { signal: signal });
+    getAll<T>(signal?: AbortSignal, requestConfig?: AxiosRequestConfig) {
+        return apiClient.get<T>(this.endpoint, { signal: signal, ...requestConfig });
     }
     delete(userID: number) {
         return apiClient.delete(this.endpoint + "/" + userID);

@@ -18,7 +18,7 @@ function App() {
         <NavBar></NavBar>
       </GridItem>
       <Show when={breakPoint != "base"}>
-        <GridItem area="aside"></GridItem>
+        <GridItem area="aside">ASIDE</GridItem>
       </Show>
       <GridItem area="main">
         <GameGrid></GameGrid>

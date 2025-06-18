@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react'
-import gamesService, { Game, Games } from '@/services/gamesService';
+import gamesService from '@/services/gamesService';
 import { AxiosError, CanceledError } from 'axios';
+export interface Game {
+    id: number,
+    name: string
+    background_image: string
+}
+export interface Games {
+    count: number,
+    results: Game[]
+}
 const useGames = () => {
     const [games, setGames] = useState<Game[]>([]);
     const [isLoading, setIsLoading] = useState(false);

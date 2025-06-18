@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { Text } from '@chakra-ui/react';
+import { SimpleGrid, Text } from '@chakra-ui/react';
 import apiClient, { AxiosError, CanceledError } from '@/services/api-client';
-import gamesService, { Games, Game } from '@/services/gamesService';
+import gamesService from '@/services/gamesService';
 import useGames from '@/hooks/useGames';
+import GameCard from './GameCard';
 const GameGrid = () => {
     const { isLoading, setIsLoading, games, setGames, error, setError } = useGames();
     return (
         <>
             {error && <Text color={'red'}> {error}</Text>}
-            <ul>
+            <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} spaceX={14} spaceY={14}>
                 {games.map(game =>
-                    <li key={game.id}>
-                        {game.name}
-                    </li>)
+                    <GameCard key={game.id} game={game}></GameCard>)
                 }
-            </ul>
+            </SimpleGrid >
         </>
     )
 }

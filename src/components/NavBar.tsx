@@ -6,7 +6,7 @@ const NavBar = () => {
     return (
         <HStack justifyContent='space-between' padding={'20px'}>
             <Image src={logo} boxSize={'50px'} />
-            <Text >Nav Bar</Text>
+            <Text fontFamily={"cursive"}>Allawi Games Hub</Text>
             <ColorModeSwitch></ColorModeSwitch>
         </HStack>
     )

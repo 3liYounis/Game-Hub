@@ -3,7 +3,7 @@ const GameCardSkeleton = () => {
     const circleSize = 5;
     return (
         <Card.Root>
-            <Skeleton height="200px" width="300px" />
+            <Skeleton height="250px" />
             <Card.Header>
                 <SkeletonText noOfLines={1} />
             </Card.Header>

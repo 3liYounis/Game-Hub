@@ -1,5 +1,5 @@
 import { HStack, Text, Button, Icon } from '@chakra-ui/react'
-import { useColorMode, useColorModeValue } from "@/components/ui/color-mode"
+import { useColorMode } from "@/components/ui/color-mode"
 import { FaSun } from "react-icons/fa6";
 import { FaMoon } from "react-icons/fa";
 

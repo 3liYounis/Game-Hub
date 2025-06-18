@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { Grid, GridItem, Show, useBreakpointValue, Button } from '@chakra-ui/react'
+import { Grid, GridItem, Show, useBreakpointValue } from '@chakra-ui/react'
 import NavBar from './components/NavBar';
 import GameGrid from './components/GameGrid';
 import './App.css'

@@ -19,7 +19,6 @@ const PlatformIconList = ({ platforms }: Props) => {
         "mac": FaApple,
         "ios": MdPhoneIphone,
         "web": BsGlobe
-
     }
     return (
         <HStack>
@@ -29,5 +28,4 @@ const PlatformIconList = ({ platforms }: Props) => {
         </HStack>
     )
 }
-
 export default PlatformIconList;

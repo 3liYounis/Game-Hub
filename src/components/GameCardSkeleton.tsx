@@ -2,7 +2,7 @@ import { Card, CardBody, Skeleton, SkeletonCircle, SkeletonText, HStack } from "
 const GameCardSkeleton = () => {
     const circleSize = 5;
     return (
-        <Card.Root height="350px" width="300px" borderRadius={10} overflow="hidden" size="md">
+        <Card.Root>
             <Skeleton height="200px" width="300px" />
             <Card.Header>
                 <SkeletonText noOfLines={1} />

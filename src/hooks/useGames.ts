@@ -19,28 +19,29 @@ export interface Games {
 }
 const useGames = () => {
     const [games, setGames] = useState<Game[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState('');
     useEffect(() => {
-        setIsLoading(true);
+        setLoading(true);
         const controller = new AbortController();
         const fetchGames = async () => {
             try {
                 const response = await gamesService.getAll<Games>(controller.signal);
                 if (response) {
                     setGames(response.data.results);
-                    setIsLoading(false);
+                    setLoading(false);
                 }
             }
             catch (error) {
                 if (error instanceof CanceledError) return;
                 setError((error as AxiosError).message);
+                setLoading(false);
             }
         }
         fetchGames();
         return () => controller.abort();
     }, []);
-    return { isLoading, setIsLoading, games, setGames, error, setError }
+    return { isLoading, setIsLoading: setLoading, games, setGames, error, setError }
 }
 
 export default useGames;

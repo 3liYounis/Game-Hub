@@ -11,13 +11,13 @@ const GameGrid = () => {
             {error && <Text color={'red'}> {error}</Text>}
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spaceX={7} spaceY={14}>
                 {isLoading && skeletons.map(skeleton =>
-                    <GameCardContainer>
-                        <GameCardSkeleton key={skeleton} />
+                    <GameCardContainer key={skeleton}>
+                        <GameCardSkeleton />
                     </GameCardContainer>
                 )}
                 {!isLoading && data.map(game =>
-                    <GameCardContainer>
-                        <GameCard key={game.id} game={game}></GameCard>
+                    <GameCardContainer key={game.id}>
+                        <GameCard game={game}></GameCard>
                     </GameCardContainer>
                 )}
             </SimpleGrid >

@@ -1,24 +1,16 @@
 import { useState, useEffect } from 'react'
-import gamesService from '@/services/gamesService';
+import genreService from '@/services/genreService';
 import { AxiosError, CanceledError } from 'axios';
-export interface Platform {
+export interface Genre {
     id: number,
     name: string,
-    slug: string
 }
-export interface Game {
-    id: number,
-    name: string,
-    background_image: string,
-    parent_platforms: { platform: Platform }[]
-    metacritic: number
-}
-export interface Games {
+export interface Genres {
     count: number,
-    results: Game[]
+    results: Genre[]
 }
-const useGames = () => {
-    const [games, setGames] = useState<Game[]>([]);
+const useGenres = () => {
+    const [genres, setGenres] = useState<Genre[]>([]);
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState('');
     useEffect(() => {
@@ -26,9 +18,9 @@ const useGames = () => {
         const controller = new AbortController();
         const fetchGames = async () => {
             try {
-                const response = await gamesService.getAll<Games>(controller.signal);
+                const response = await genreService.getAll<Genres>(controller.signal);
                 if (response) {
-                    setGames(response.data.results);
+                    setGenres(response.data.results);
                     setLoading(false);
                 }
             }
@@ -41,7 +33,7 @@ const useGames = () => {
         fetchGames();
         return () => controller.abort();
     }, []);
-    return { isLoading, games, error }
+    return { isLoading, genres, error }
 }
 
-export default useGames;
+export default useGenres;

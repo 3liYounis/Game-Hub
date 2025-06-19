@@ -8,7 +8,6 @@ import { Genre } from './hooks/useGenres';
 import PlatformDropDown from './components/PlatformDropDown';
 import { Platform } from './hooks/useGames';
 import SortDropDown from './components/SortDropDown';
-import SearchBar from './components/SearchBar';
 export interface GameQuery {
   genre: Genre | null,
   platform: Platform | null,

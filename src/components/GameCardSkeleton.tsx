@@ -5,9 +5,6 @@ const GameCardSkeleton = () => {
         <Card.Root>
             <Skeleton height="300px" />
             <Card.Header>
-                <SkeletonText noOfLines={1} />
-            </Card.Header>
-            <CardBody>
                 <HStack justifyContent="space-between">
                     <HStack justifyContent="space-between">
                         <SkeletonCircle size={circleSize} />
@@ -17,6 +14,11 @@ const GameCardSkeleton = () => {
                     </HStack>
                     <Skeleton paddingX={2} borderRadius={7} boxSize={6} />
                 </HStack>
+            </Card.Header>
+            <CardBody>
+                <SkeletonText noOfLines={1} />
+                <SkeletonCircle size={circleSize} />
+
             </CardBody>
         </Card.Root>
     )

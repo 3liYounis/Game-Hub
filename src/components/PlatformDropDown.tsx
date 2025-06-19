@@ -36,7 +36,9 @@ const PlatformDropDown = ({ onSelectPlatform }: Props) => {
             <Portal>
                 <Select.Positioner>
                     <Select.Content maxHeight={170}>
-                        {platforms.items.map((platform) => (
+                        {platforms.items.map((platform: {
+                            id: number, value: string, label: string
+                        }) => (
                             <Select.Item item={platform} key={platform.id} onClick={() => onSelectPlatform(mapToPlatform(platform))}>
                                 <HStack>
                                     <Icon key={platform.id} as={iconMap[platform.value] ?? iconMap["not_supported"]} color="ActiveBorder" />

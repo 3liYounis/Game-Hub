@@ -40,9 +40,7 @@ function App() {
       <Box position="sticky" top="0" maxHeight="100vh" overflowY="auto">
         <Show when={breakPoint != "base"}>
           <GridItem area="aside" paddingX={5} >
-            <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}>
-            </GenreList>
-          </GridItem>
+            <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} />          </GridItem>
         </Show>
       </Box>
       <GridItem area="main">

@@ -7,9 +7,12 @@ import { useState } from 'react';
 import { Genre } from './hooks/useGenres';
 import PlatformDropDown from './components/PlatformDropDown';
 import { Platform } from './hooks/useGames';
+export interface GameQuery {
+  genre: Genre | null,
+  platform: Platform | null
+}
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   const breakPoint = useBreakpointValue(
     {
       base: "base",
@@ -30,14 +33,14 @@ function App() {
       <Box position="sticky" top="0" maxHeight="100vh" overflowY="auto">
         <Show when={breakPoint != "base"}>
           <GridItem area="aside" paddingX={5} >
-            <GenreList selectedGenre={selectedGenre} onSelectGenre={setSelectedGenre}>
+            <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}>
             </GenreList>
           </GridItem>
         </Show>
       </Box>
       <GridItem area="main">
-        <PlatformDropDown onSelectPlatform={setSelectedPlatform}></PlatformDropDown>
-        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform}></GameGrid>
+        <PlatformDropDown onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}></PlatformDropDown>
+        <GameGrid gameQuery={gameQuery}></GameGrid>
       </GridItem>
     </Grid >
   )

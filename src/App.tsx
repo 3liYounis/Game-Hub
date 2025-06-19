@@ -5,8 +5,11 @@ import './App.css'
 import GenreList from './components/GenreList';
 import { useState } from 'react';
 import { Genre } from './hooks/useGenres';
+import PlatformDropDown from './components/PlatformDropDown';
+import { Platform } from './hooks/useGames';
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
   const breakPoint = useBreakpointValue(
     {
       base: "base",
@@ -33,7 +36,8 @@ function App() {
         </Show>
       </Box>
       <GridItem area="main">
-        <GameGrid selectedGenre={selectedGenre}></GameGrid>
+        <PlatformDropDown onSelectPlatform={setSelectedPlatform}></PlatformDropDown>
+        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform}></GameGrid>
       </GridItem>
     </Grid >
   )

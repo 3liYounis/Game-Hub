@@ -22,7 +22,7 @@ const PlatformDropDown = ({ onSelectPlatform }: Props) => {
     if (error) return null
     const platforms = mapToMatchTemplate(data);
     return (
-        <Select.Root collection={platforms} variant="subtle" size="lg" width="250px" fontFamily="monospace" color="ActiveBorder" paddingX={2} marginX={10} marginY={10}>
+        <Select.Root collection={platforms} variant="subtle" size="lg" width="250px" fontFamily="monospace" color="ActiveBorder" paddingX={2} marginBottom={5}>
             <Select.HiddenSelect />
             <Select.Control>
                 <Select.Trigger>

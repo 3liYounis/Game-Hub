@@ -19,7 +19,7 @@ const data = {
 const SortDropDown = ({ onSelectOrder }: Props) => {
     const orders = createListCollection(data);
     return (
-        <Select.Root collection={orders} variant="subtle" size="lg" width="200px" fontFamily="monospace" color="ActiveBorder" paddingX={2} marginBottom={5}>
+        <Select.Root collection={orders} variant="subtle" size="lg" width="200px" fontFamily="monospace" color="ActiveBorder">
             <Select.HiddenSelect />
             <Select.Control>
                 <Select.Trigger>

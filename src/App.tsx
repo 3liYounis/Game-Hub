@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show, useBreakpointValue, Box, HStack, Heading } from '@chakra-ui/react'
+import { Grid, GridItem, Show, useBreakpointValue, Box, HStack, Heading, Stack } from '@chakra-ui/react'
 import NavBar from './components/NavBar';
 import GameGrid from './components/GameGrid';
 import './App.css'
@@ -47,11 +47,13 @@ function App() {
         </Show>
       </Box>
       <GridItem area="main">
-        <Heading fontFamily="cursive" fontSize={40} marginBottom={2}>{heading}</Heading>
-        <HStack>
-          <PlatformDropDown onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })} />
-          <SortDropDown onSelectOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })} />
-        </HStack>
+        <Stack alignItems="center" marginBottom={4}>
+          <Heading fontFamily="cursive" fontSize={40} marginBottom={2} paddingX={2} paddingY={5}>{heading}</Heading>
+          <HStack>
+            <PlatformDropDown onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })} />
+            <SortDropDown onSelectOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })} />
+          </HStack>
+        </Stack>
         <GameGrid gameQuery={gameQuery}></GameGrid>
       </GridItem>
     </Grid >

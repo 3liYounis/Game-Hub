@@ -1,9 +1,9 @@
 import { Card, CardBody, Skeleton, SkeletonCircle, SkeletonText, HStack } from "@chakra-ui/react";
 const GameCardSkeleton = () => {
-    const circleSize = 5;
+    const circleSize = 6;
     return (
         <Card.Root>
-            <Skeleton height="250px" />
+            <Skeleton height="300px" />
             <Card.Header>
                 <SkeletonText noOfLines={1} />
             </Card.Header>

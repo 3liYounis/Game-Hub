@@ -1,6 +1,7 @@
 import { Platform } from "@/hooks/useGames";
 import usePlatforms from "@/hooks/usePlatform";
-import { Select, Portal, createListCollection } from "@chakra-ui/react"
+import { Select, Portal, createListCollection, HStack, Icon, Text } from "@chakra-ui/react"
+import { iconMap } from "./PlatformIconList";
 interface Props {
     onSelectPlatform: (platform: Platform | null) => void;
 }
@@ -21,22 +22,26 @@ const PlatformDropDown = ({ onSelectPlatform }: Props) => {
     if (error) return null
     const platforms = mapToMatchTemplate(data);
     return (
-        <Select.Root collection={platforms} size="lg" width="250px" fontFamily="monospace" color="ActiveBorder" marginY={5}>
+        <Select.Root collection={platforms} variant="subtle" size="lg" width="250px" fontFamily="monospace" color="ActiveBorder" paddingX={2} marginX={10} marginY={10}>
             <Select.HiddenSelect />
             <Select.Control>
                 <Select.Trigger>
                     <Select.ValueText placeholder="Platform" />
                 </Select.Trigger>
                 <Select.IndicatorGroup>
+                    <Select.ClearTrigger onClick={() => onSelectPlatform(null)} />
                     <Select.Indicator />
                 </Select.IndicatorGroup>
             </Select.Control>
             <Portal>
                 <Select.Positioner>
-                    <Select.Content>
+                    <Select.Content maxHeight={170}>
                         {platforms.items.map((platform) => (
                             <Select.Item item={platform} key={platform.id} onClick={() => onSelectPlatform(mapToPlatform(platform))}>
-                                {platform.label}
+                                <HStack>
+                                    <Icon key={platform.id} as={iconMap[platform.value] ?? iconMap["not_supported"]} color="ActiveBorder" />
+                                    <Text>{platform.label}</Text>
+                                </HStack>
                                 <Select.ItemIndicator />
                             </Select.Item>
                         ))}

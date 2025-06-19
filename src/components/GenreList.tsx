@@ -11,7 +11,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
     const { data, isLoading } = useGenres();
     const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     return (
-        <List.Root>
+        <List.Root listStyleType="none">
             {isLoading && items.map(item =>
                 <List.Item key={item} paddingY={2}>
                     <GenreListSkeleton />
